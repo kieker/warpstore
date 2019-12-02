@@ -1,4 +1,5 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Install dependencies
+To install dependencies needed for this project, please navigate to the directory in the command line and run yarn install
 
 ## Available Scripts
 
