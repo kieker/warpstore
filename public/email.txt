@@ -1,0 +1,14 @@
+Good morning Rudi,
+
+We haven't spoken directly before, my name is John-Henry and I am a developer at Warp Development, how are you doing? 
+
+The reason that I am getting in touch with you, is to let you know that your Car store app is completed. 
+
+I will include a link to your program at the bottom of the page, here you can download a copy of the app. Once the files are downloaded, you will need to run a command line program. The default windows/mac/linux command line will work perfectly, but I can also recommend cmder if you are on windows (https://cmder.net). Navigate to the directory where you unzipped the files, then run yarn install to install everything that you need to run this app. Next, run yarn build to build your application and then run yarn start to start it up. 
+
+There is also a readme file in the project which will explain these commands in more depth. However, please let me know if you get stuck on this, and I will gladly assist. 
+
+The link to your app is : https://github.com/kieker/warpstore/
+
+Kind Regards, 
+John-Henry Ross
