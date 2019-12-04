@@ -7,8 +7,9 @@ class Sidebar extends React.Component {
       
         return (
             
-          <div className="side"> <Filter cardata={this.props.cars} filterthis="body" filterchange={this.props.filterchange}/>
-          <Filter cardata={this.props.cars} filterthis="manufacturer" filterchange={this.props.filterchange} />
+          <div className="side"> 
+            <Filter cardata={this.props.cars} filterthis="body" filterchange={this.props.filterchange} />
+            <Filter cardata={this.props.cars} filterthis="manufacturer" filterchange={this.props.filterchange} />
           <RangeFilter ></RangeFilter>
            </div>
         )

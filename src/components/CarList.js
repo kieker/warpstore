@@ -1,6 +1,6 @@
 import React from 'react';
 import Car from '../components/Car';
-import lodash from 'lodash'
+
 class CarList extends React.Component {
     state = {"data":[
         {
@@ -66,41 +66,39 @@ class CarList extends React.Component {
         fetch('http://kiekerweb.co.za/vehicles.json')
       .then(response => response.json())
       .then((jsonData) => {
-        // jsonData is parsed json object received from url
+
         console.log(jsonData)
       })
       .catch((error) => {
-        // handle your errors here
+  
         console.error(error)
       })
       }
     componentDidMount() {
         this.getData()
     }
-    filter_cars(the_filter, type) {
-        
-         const results = lodash.pick(this.state.data,the_filter);
-        console.log(results)
-        return results 
-    }
+
     render() {
-        let display
+        let display = this.state.data
 
         Object.entries(this.props.filter).forEach(([key, value]) => { 
-        if (value !== '') {
-             display = this.state.data.filter(o => o.body === value )  
-                  
-        }
-        else  display = this.state.data
-        console.log(display)  //filter doesn't work correctly. but here you can see the output in the console of what it would have filtered.
-    })
+            if (value !== '') 
+            {
+
+                display = display.filter(o =>  o[key] === value  )  
+            
+            }
+            /*else  display = this.state.data*/
+        
+        })
     
         return (
             <div className="carlist-element">
                 
-                { Object.keys(display).map(key => <Car 
+                {console.log(display)}
+                { Object.keys(display).map((curr,key) => <Car 
                 key={key} 
-                cardetails={this.state.data[key]} 
+                cardetails={display[key]} 
                 addCar={this.props.addCar} 
                 removeCar={this.props.removeCar}/>)}
             </div>
