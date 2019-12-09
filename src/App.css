@@ -71,10 +71,7 @@ color:#000;
   border-bottom:1px solid #efefef;
 }
 .car-element{
-  padding:50px;
   border:1px solid #666;
-  border-radius:3px;
-  margin-bottom:20px;
 }
 .carlist-element
 {
@@ -112,34 +109,58 @@ header {
 }
 .car-element h3 {
   margin-top:0;
+  margin-bottom:30px;
   text-align:left;
 }
-button {
+.car-element:after{
+  content:"";
+  clear:both;
+  display:block; 
+}
+button, a.button {
   display:inline-block;
-  position:absolute;
-  width:200px;
-  height:50px;
+  width:100%;
+  height:auto;
   border-radius:5px;
   border:none;
   text-transform:uppercase;
   font-weight:bold;
-  box-shadow: 0 5px #000;
-  background-color:#666;
+  box-shadow: 0 5px #0152a9;
+  background-color:#0062cc;
   margin:auto;
-  margin-top:50px;
+  margin-top:20px;
+  padding:10px 15px;
   color:#fff;
   transition:0.2s;
   z-index:10;
   bottom:30px;
   right:20px;
+  text-align:center;
+  /* line-height:50px; */
   
   
 }
-button:hover {
-  box-shadow: 0 4px #000;
+.car-element button , .car-element a.button {
+  width:48%;
+  margin-right:2%;
+}
+.cart-button button {
+  position: static; 
+  margin: 20px;
+  background-color: #efefef;
+  width:200px;
+  line-height:20px;
+}
+.dropdown-toggle{
+  width:100%;
+  text-transform: capitalize;
+}
+button:hover, a.button:hover {
+  box-shadow: 0 4px #0152a9;
   transform:translateY(1px);
   transition:0.2s;
   outline:0;
+  text-decoration: none;;
 }
 
 button:focus
@@ -150,11 +171,7 @@ button:active {
   transform:translateY(2px);
    box-shadow: 0 2px #000;
 }
-.car-element:after{
-  content:"";
-  clear:both;
-  display:block; 
-}
+
 select,input { 
   border-radius:5px;
   height:42px;
@@ -181,10 +198,20 @@ select {width:100%}
   background-color:#efefef;
   margin:10px 0;
 }
+.img_container {
+  float:left;
+  min-height:203px;
+  margin-right:5%;
+}
+.img_container img {
+  border-radius:4px;
+}
 @media all and (max-width:967px)
 {
-  .side,.carlist-element,.car-element,.img_container,.details_container {display:block; width:90%;margin:auto; float: none;clear:both;margin-bottom:20px;}
-
+  .side,.carlist-element,.car-element,.img_container,.details_container {display:block; width:100%;margin:auto; float: none;clear:both;margin-bottom:20px;min-height:auto}
+  .img_container  {text-align: center;display: inline-block;}
+  .img_container img { float:none;}
   button {position:static;}
+  .car-element button, .car-element a.button { width:100%;margin-bottom:20px;}
   .details_container {display:block; margin-top:20px;}
 }

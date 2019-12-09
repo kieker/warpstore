@@ -1,7 +1,11 @@
 import React from 'react';
 import Car from '../components/Car';
+import {useState, useSelector, useDispatch} from 'react-redux';
+
 
 class CarList extends React.Component {
+// function Carlist()
+
     state = {"data":[
         {
             "manufacturer": "Porsche",
@@ -61,31 +65,29 @@ class CarList extends React.Component {
         }
     ]}
 
-
-    getData = () => {
-        fetch('http://kiekerweb.co.za/vehicles.json')
-      .then(response => response.json())
-      .then((jsonData) => {
-
-        console.log(jsonData)
-      })
-      .catch((error) => {
-  
-        console.error(error)
-      })
-      }
     componentDidMount() {
-        this.getData()
+       
+        //const carsData = useSelector(state => state.getData)
     }
+   
 
-    render() {
+   render() {
+        // const CarList = () => {
+        // let display = useSelector(state => state.data)
         let display = this.state.data
-
         Object.entries(this.props.filter).forEach(([key, value]) => { 
             if (value !== '') 
             {
-
-                display = display.filter(o =>  o[key] === value  )  
+                if ( key === 'to_price') {
+                    display = display.filter(o =>  o['price']/10 < value  )  
+                } 
+                else if (key === 'from_price') {
+                    display = display.filter(o =>  o['price']/10 > value  )  
+                }
+                else {
+                    display = display.filter(o =>  o[key] === value  )  
+                }
+                
             
             }
             /*else  display = this.state.data*/
@@ -93,9 +95,7 @@ class CarList extends React.Component {
         })
     
         return (
-            <div className="carlist-element">
-                
-                {console.log(display)}
+            <div className="carlist-element">   
                 { Object.keys(display).map((curr,key) => <Car 
                 key={key} 
                 cardetails={display[key]} 
@@ -105,4 +105,4 @@ class CarList extends React.Component {
         )
     }
 }
-export default CarList
+export default CarList;

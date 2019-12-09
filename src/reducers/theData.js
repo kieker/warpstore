@@ -1,16 +1,17 @@
-import React from 'react';
+const fetchData = () => {
+    fetch('http://kiekerweb.co.za/vehicles.json')
+  .then(response => response.json())
+  .then((jsonData) => {
+    // jsonData is parsed json object received from url
+    return jsonData
+  })
+  .catch((error) => {
+    // handle your errors here
+    return error
+  })
+  }
 
-import './App.css';
-import Header from './components/header';
-import Sidebar from './components/Sidebar';
-import {useSelector, useDispatch} from 'react-redux';
-import CarList from './components/CarList';
-import { getData } from './actions';
-import Container from 'react-bootstrap/Container'
-import Col from 'react-bootstrap/Col'
-
-class App extends React.Component {
-  state = { "data" : [
+const getData = (state = [
     {
         "manufacturer": "Porsche",
         "model": "911",
@@ -67,45 +68,13 @@ class App extends React.Component {
         "wiki":"https://en.wikipedia.org/wiki/Ford_Mustang",
         "img": "/images/Ford_Mustang_GT.jpg"
     }
-] ,'filter': {
-      "body": '',
-       "manufacturer": ''}}
-  componentDidMount() {
-    //let dispatch = useDispatch(getData)
-  }
-  addCar = car => {
-    const cars = {...this.state.cars};
-      /*const key = cars[car]*/
-        cars[car] = cars[car] +1 || 1;
-        if (cars[car] >1){
-          cars[car] = 1
-          alert(car+ " is already in the cart")
-        }
-        this.setState({cars});
-  }
-  removeCar = car => {
-    const cars = {...this.state.cars}
-     cars[car] =null
-    this.setState({cars});
-  }
-  changeFilter = (filter_item, type) => {
-    const filter = this.state.filter
-    filter[type] = filter_item
-    this.setState({filter});
-  }
-  render() {
+], action) => {
 
- 
-  return (
-    <div className="App">
-      <Header  cars_in_cart={this.state.cars} removeCar={this.removeCar}></Header>
-      <Container>
-        <div className="headline"> <h1>Browse Vehicles</h1></div>
-        <Col><Sidebar cars={this.state} filterchange={this.changeFilter}></Sidebar></Col>
-        <Col><CarList addCar={this.addCar} filter={this.state.filter} ></CarList></Col>
-      </Container>
-    </div>
-  ) }
-}
-
-export default App;
+    switch(action.type){
+        case "getData":
+            return state = this.fetchData()
+        default: 
+            return state
+    }
+  }
+  export default getData;

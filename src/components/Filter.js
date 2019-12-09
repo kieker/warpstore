@@ -1,5 +1,6 @@
 import React from 'react';
-
+import Dropdown from 'react-bootstrap/Dropdown'
+import DropdownButton from 'react-bootstrap/DropdownButton';
 
 class Filter extends React.Component {
     handleChange(item) {
@@ -21,11 +22,11 @@ class Filter extends React.Component {
         })
         
         const the_filter  = [...new Set(car_body_arr)]
-    
+            const the_obj = this;
             return (
                 <div>
-                    <div className="filter_label">{what_to_filter} </div>
-                    <select onChange={(event) => this.handleChange(event.target.value)}>
+                    
+                    <DropdownButton title={what_to_filter}>
                     
                         {the_filter.map(function(currItem, index){
                             let the_value = the_filter[index]
@@ -33,11 +34,11 @@ class Filter extends React.Component {
                             {
                                 the_value = ""
                             }
-                        return  <option className="head" value={the_value} key={index}>{the_filter[index]} </option>
+                        return  <Dropdown.Item eventKey={the_value} value={the_value} key={index} onClick={(event) => the_obj.handleChange(the_value)}>{the_filter[index]} </Dropdown.Item>
                         })}
                         
                     
-                    </select>
+                    </DropdownButton>
                     <hr />
                 </div>
             )

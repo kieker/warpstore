@@ -1,49 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {createStore} from 'redux';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import reducers from './reducers'
+import {Provider} from 'react-redux';
+
 
 //Store
-//let store = createStore()
-/*const getData = () => {
-    fetch('http://kiekerweb.co.za/vehicles.json')
-  .then(response => response.json())
-  .then((jsonData) => {
-    // jsonData is parsed json object received from url
-    return jsonData
-  })
-  .catch((error) => {
-    // handle your errors here
-    return error
-  })
-  }*/
+let store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
-//Action
-// const saveData = (state = [], action) => {
-//     return {
-//         type:"SaveData":
-//         state = getData()
-        
-//     }
-// }
-// const fetchData = (state = null, action) => {
-  
-//     return state
-// }
-// //Reducer
-// const theData = (state = null, action) => {
-  
-//     switch(action.type){
-//         case "SaveData":
-            
-//         default: 
-//             return state
-//     }
-// }
 // //Dispatch
-
-ReactDOM.render(<App />, document.getElementById('root'));
+//store.dispatch(getData);
+ReactDOM.render(
+<Provider store={store}>
+  <App />
+</Provider>, 
+document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
